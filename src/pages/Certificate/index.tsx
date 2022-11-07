@@ -1,17 +1,18 @@
 import React, { useRef } from "react";
 
+// Components
 import { Container, Row, Stack as Flex } from "react-bootstrap";
+import { Text, HR, ImageContainer, Image, Tag, Download, Close } from "./style";
 
-import { Text, HR, ImageContainer, Image, Tag, Download } from "./style";
-
+// Assets
 import { Logo, BABY } from "../../assets";
-
 import { GoDesktopDownload } from "react-icons/go";
+import { IoMdClose } from "react-icons/io";
 
-import { getDateToString, exportPDF } from "../../helpers";
+// Helpers
+import { dateToString, exportPDF, store, useQuery } from "../../helpers";
 
 export function Certificate() {
-  const urlParams = new URLSearchParams(window.location.search);
   const main = useRef(document.createElement("main"));
 
   const {
@@ -22,7 +23,7 @@ export function Certificate() {
     nameFather,
     nameMother,
     dateOfThePresentation,
-  } = Object.fromEntries(urlParams.entries());
+  } = useQuery() || store.get();
 
   return (
     <Container
@@ -33,6 +34,10 @@ export function Certificate() {
       }`}
       ref={main}
     >
+      <Close onClick={() => window.close()}>
+        <IoMdClose />
+      </Close>
+
       <Text.H1 className="text-center font-matura mb-5">
         Certificado de Apresentação
       </Text.H1>
@@ -41,9 +46,8 @@ export function Certificate() {
         <span className={gender === "M" ? "color-male" : "color-female"}>
           {name}.
         </span>
-        {gender === "M" ? "Nascido" : "Nascida"} no dia{" "}
-        {getDateToString(new Date(birthday))}, na cidade de {city}.{" "}
-        {gender === "M" ? "Filho" : "Filha"} de
+        {gender === "M" ? "Nascido" : "Nascida"} no dia {dateToString(birthday)}
+        , na cidade de {city}. {gender === "M" ? "Filho" : "Filha"} de
         {nameFather} e {nameMother}, foi{" "}
         {gender === "M" ? "apresentado" : "apresentada"} ao Senhor Jesus Cristo,
         conforme a palavra de Deus em Lucas 2:22.
@@ -69,7 +73,7 @@ export function Certificate() {
           >
             Feira da Mata - BA{" "}
             <Text.SPAN size={32} className="font-moolboran mt-4">
-              {getDateToString(new Date(dateOfThePresentation))}
+              {dateToString(dateOfThePresentation)}
             </Text.SPAN>
           </Text.SPAN>
 
