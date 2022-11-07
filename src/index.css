@@ -1,13 +1,120 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+/* reset bootstrap */
+.form-control:focus,
+.btn:focus-visible,
+.form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem rgba(66, 70, 73, 0.5) !important;
+}
+.form-control:focus {
+  border-color: rgb(66, 70, 73) !important;
+}
+.form-check-input:checked {
+  background-color: rgb(66, 70, 73) !important;
+  border-color: rgb(66, 70, 73) !important;
+}
+.form-floating > label.start-10px {
+  left: 10px;
+}
+.img-100 {
+  width: 100% !important;
+}
+@media (min-width: 576px) {
+  .img-100 {
+    width: 25% !important;
+  }
+}
+@media (max-width: 576px) {
+  .w-sm-100 {
+    width: 100%;
+  }
+}
+
+/* utilities */
+@import url("https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lobster+Two&display=swap");
+
+@font-face {
+  font-family: Matura;
+  src: url(./assets/fonts/maturasc.ttf);
+}
+@font-face {
+  font-family: Moolboran;
+  src: url(./assets/fonts/moolboran.ttf);
+}
+
+:root {
+  --female-bg-color: #eadee3;
+  --female-text-color: #d25e87;
+
+  --male-bg-color: #d4e6f7;
+  --male-text-color: #3f54a1;
+
+  --default-text-color: #545454;
+}
+
+.font-great-vibes {
+  font-family: "Great Vibes", cursive;
+}
+.font-lobster-two {
+  font-family: "Lobster Two", cursive;
+}
+.font-matura {
+  font-family: Matura, sans-serif;
+}
+.font-moolboran {
+  font-family: Moolboran, sans-serif;
+}
+
+.h1 {
+  font-size: 48pt !important;
+}
+.h2 {
+  font-size: 36pt !important;
+  line-height: 100%;
+}
+
+.bg-female {
+  background-color: var(--female-bg-color);
+  background-image: radial-gradient(circle, #ffffff 0%, var(--female-bg-color) 50%);
+}
+.color-female {
+  color: var(--female-text-color);
+  text-shadow: 1px 1px 1px var(--female-text-color);
+  font-size: 48pt;
+}
+.bg-male {
+  background-color: var(--male-bg-color);
+  background-image: radial-gradient(circle, #ffffff 0%, var(--male-bg-color) 50%);
+}
+.color-male {
+  color: var(--male-text-color);
+  text-shadow: 1px 1px 1px var(--male-text-color);
+  font-size: 48pt;
+}
+.color-default {
+  color: var(--default-text-color);
+}
+
+.certificate {
+  padding: 5.7% min(150px, 10.75%) !important;
+  aspect-ratio: 10/7;
+  z-index: 1;
+}
+
+.line-height-10 {
+  line-height: 10px;
+}
+
+.opacity-14 {
+  opacity: 14%;
 }
