@@ -6,7 +6,8 @@ export const exportPDF = (
   ref: HTMLElement,
   nameFile: string = "print.pdf"
 ) => {
-  e.target.style.opacity = 0;
+  const buttons = document.querySelectorAll("button");
+  buttons.forEach((button) => (button.style.opacity = "0"));
 
   html2canvas(ref, { logging: true, useCORS: true }).then((canvas) => {
     const imgData = canvas.toDataURL("img/png");
@@ -15,6 +16,6 @@ export const exportPDF = (
 
     pdf.save(nameFile);
 
-    e.target.style.opacity = 1;
+    buttons.forEach((button) => (button.style.opacity = "1"));
   });
 };

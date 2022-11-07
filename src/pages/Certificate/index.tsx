@@ -2,11 +2,12 @@ import React, { useRef } from "react";
 
 // Components
 import { Container, Row, Stack as Flex } from "react-bootstrap";
-import { Text, HR, ImageContainer, Image, Tag, Download } from "./style";
+import { Text, HR, ImageContainer, Image, Tag, Download, Close } from "./style";
 
 // Assets
 import { Logo, BABY } from "../../assets";
 import { GoDesktopDownload } from "react-icons/go";
+import { IoMdClose } from "react-icons/io";
 
 // Helpers
 import { dateToString, exportPDF, store, useQuery } from "../../helpers";
@@ -33,6 +34,10 @@ export function Certificate() {
       }`}
       ref={main}
     >
+      <Close onClick={() => window.close()}>
+        <IoMdClose />
+      </Close>
+
       <Text.H1 className="text-center font-matura mb-5">
         Certificado de Apresentação
       </Text.H1>
