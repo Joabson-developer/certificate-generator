@@ -14,6 +14,8 @@ import { DataCertificate } from "../../@types/data-certificate";
 
 import { Logo, Banner } from "../../assets";
 
+import { generateCertificate } from "../../helpers";
+
 export function Home() {
   const initialData: DataCertificate = {
     name: "",
@@ -29,39 +31,6 @@ export function Home() {
 
   const newData = (newState: any) => {
     setData((prevState) => ({ ...prevState, ...newState }));
-  };
-
-  const buildCertificate = ({
-    name,
-    gender,
-    city,
-    birthday,
-    dateOfThePresentation,
-    nameFather,
-    nameMother,
-  }: DataCertificate) => {
-    if (
-      !(
-        name &&
-        gender &&
-        city &&
-        birthday &&
-        dateOfThePresentation &&
-        nameFather &&
-        nameMother
-      )
-    )
-      return;
-
-    const queryParams = `?name=${name}&gender=${gender}&city=${city}&birthday=${birthday}&dateOfThePresentation=${dateOfThePresentation}&nameFather=${nameFather}&nameMother=${nameMother}`;
-
-    console.log(queryParams);
-
-    window.open(
-      `./certificate${queryParams}`,
-      "_blank",
-      "width=1368,height=768"
-    );
   };
 
   return (
@@ -197,7 +166,7 @@ export function Home() {
           <Button
             variant="dark"
             className="w-sm-100"
-            onClick={() => buildCertificate(data)}
+            onClick={() => generateCertificate(data)}
           >
             Gerar certificado
           </Button>
