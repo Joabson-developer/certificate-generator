@@ -34,7 +34,7 @@ export function Certificate() {
       }`}
       ref={main}
     >
-      <Close onClick={() => window.close()}>
+      <Close aria-label="fechar" onClick={() => window.close()}>
         <IoMdClose />
       </Close>
 
@@ -129,6 +129,7 @@ export function Certificate() {
       </ImageContainer>
 
       <Download
+        aria-label="baixar PDF"
         className="btn btn-dark"
         onClick={(e) => exportPDF(e, main.current, name)}
       >

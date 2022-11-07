@@ -30,14 +30,9 @@ export function Home() {
     <>
       <Navbar bg="dark" variant="dark" className="mb-5">
         <Container>
-          <Navbar.Brand href="/">
-            <img
-              alt=""
-              src={Logo}
-              height="30"
-              className="d-inline-block align-top"
-            />{" "}
-            Gerador de Certificado
+          <Navbar.Brand href="/" className="d-flex align-items-center gap-3">
+            <img alt="" src={Logo} height="50" className="mb-3" />{" "}
+            <h1 className="h4">Gerador de Certificado</h1>
           </Navbar.Brand>
         </Container>
       </Navbar>
@@ -49,7 +44,7 @@ export function Home() {
         className="mx-auto d-block mb-3 img-100"
       />
 
-      <Container>
+      <Container as="main">
         <Form>
           <Form.Group className="form-floating" controlId="nameChildren">
             <Form.Control
