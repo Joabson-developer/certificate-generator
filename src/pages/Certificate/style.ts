@@ -93,4 +93,19 @@ const Download = styled.button`
   color: #fff;
 `;
 
-export { Text, HR, ImageContainer, Image, Tag, Download };
+const Close = styled.button`
+  background: transparent;
+  border: none;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  position: fixed;
+  right: 15px;
+  top: 15px;
+
+  & > * {
+    pointer-events: none;
+    font-size: 30px;
+  }
+`;
+
+export { Text, HR, ImageContainer, Image, Tag, Download, Close };

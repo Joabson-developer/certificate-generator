@@ -14,54 +14,16 @@ import { DataCertificate } from "../../@types/data-certificate";
 
 import { Logo, Banner } from "../../assets";
 
+import { generateCertificate, store } from "../../helpers";
+
 export function Home() {
-  const initialData: DataCertificate = {
-    name: "",
-    gender: "M",
-    city: "",
-    birthday: "",
-    dateOfThePresentation: "",
-    nameFather: "",
-    nameMother: "",
-  };
+  const initialData: DataCertificate = store.get();
 
   const [data, setData] = useState(initialData);
 
   const newData = (newState: any) => {
     setData((prevState) => ({ ...prevState, ...newState }));
-  };
-
-  const buildCertificate = ({
-    name,
-    gender,
-    city,
-    birthday,
-    dateOfThePresentation,
-    nameFather,
-    nameMother,
-  }: DataCertificate) => {
-    if (
-      !(
-        name &&
-        gender &&
-        city &&
-        birthday &&
-        dateOfThePresentation &&
-        nameFather &&
-        nameMother
-      )
-    )
-      return;
-
-    const queryParams = `?name=${name}&gender=${gender}&city=${city}&birthday=${birthday}&dateOfThePresentation=${dateOfThePresentation}&nameFather=${nameFather}&nameMother=${nameMother}`;
-
-    console.log(queryParams);
-
-    window.open(
-      `./certificate${queryParams}`,
-      "_blank",
-      "width=1368,height=768"
-    );
+    store.set(data);
   };
 
   return (
@@ -149,6 +111,7 @@ export function Home() {
               <Form.Control
                 type="date"
                 placeholder="Data de nascimento"
+                value={data.birthday}
                 onChange={(e) => newData({ birthday: e.target.value })}
               />
             </Col>
@@ -158,6 +121,7 @@ export function Home() {
               <Form.Control
                 type="date"
                 placeholder="Data de apresentação"
+                value={data.dateOfThePresentation}
                 onChange={(e) =>
                   newData({ dateOfThePresentation: e.target.value })
                 }
@@ -175,7 +139,12 @@ export function Home() {
                 <Form.Control
                   type="text"
                   placeholder="Nome do pai"
-                  onChange={(e) => newData({ nameFather: e.target.value })}
+                  value={data.nameFather}
+                  onChange={(e) =>
+                    newData({
+                      nameFather: e.target.value,
+                    })
+                  }
                 />
                 <Form.Label className="start-10px">Nome do pai</Form.Label>
               </Form.Group>
@@ -187,7 +156,12 @@ export function Home() {
                 <Form.Control
                   type="text"
                   placeholder="Nome da mãe"
-                  onChange={(e) => newData({ nameMother: e.target.value })}
+                  value={data.nameMother}
+                  onChange={(e) =>
+                    newData({
+                      nameMother: e.target.value,
+                    })
+                  }
                 />
                 <Form.Label className="start-10px">Nome da mãe</Form.Label>
               </Form.Group>
@@ -197,7 +171,10 @@ export function Home() {
           <Button
             variant="dark"
             className="w-sm-100"
-            onClick={() => buildCertificate(data)}
+            onClick={() => {
+              store.set(data);
+              generateCertificate(data);
+            }}
           >
             Gerar certificado
           </Button>
