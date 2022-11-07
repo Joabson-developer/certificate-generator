@@ -9,7 +9,7 @@ import { Logo, BABY } from "../../assets";
 import { GoDesktopDownload } from "react-icons/go";
 
 // Helpers
-import { dateToString, exportPDF, useQuery } from "../../helpers";
+import { dateToString, exportPDF, store, useQuery } from "../../helpers";
 
 export function Certificate() {
   const main = useRef(document.createElement("main"));
@@ -22,7 +22,7 @@ export function Certificate() {
     nameFather,
     nameMother,
     dateOfThePresentation,
-  } = useQuery();
+  } = useQuery() || store.get();
 
   return (
     <Container
